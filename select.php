@@ -35,37 +35,45 @@ $con->close();
     <br>
     <title>Student and Course Records</title>
     <link rel="stylesheet" href="style.css">
+   
 </head>
 <body>
     <h1>Student and Course Records</h1>
-    <h3>Student Records</h3>
+    <div class="button">
+            <a href="MIS_DB.html">
+            <center><button type="button">Insert Data</button></a></center>
+        </div>
+        <br>
+        <br>
+    <center><h3>Student Records</h3>
 <?php if (!empty($studentRecords)) : ?>
     <table border="1" cellpadding="5" cellspacing="0">
         <thead>
+        
             <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Major</th>
-                <th>Actions</th>
+                <th style="padding: 10px;">ID</th>
+                <th style="padding: 10px;">Name</th>
+                <th style="padding: 10px;">Major</th>
+                <th style="padding: 10px;">Actions</th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($studentRecords as $student) : ?>
                 <tr>
-                    <td><?php echo $student['Stud_ID']; ?></td>
+                    <td ><?php echo $student['Stud_ID']; ?></td>
                     <td><?php echo $student['Stud_Name']; ?></td>
                     <td><?php echo $student['Major']; ?></td>
                     <td>
                         
                         <form action="update.php" method="post" >
                             <input type="hidden" name="id" value="<?php echo $student['Stud_ID']; ?>">
-                            <button type="submit" name="action" value="update">Update</button>
+                            <button type="submit" name="action" value="update" class="update-button">Update</button>
                         </form>
 
                       
                         <form action="delete.php" method="post">
                             <input type="hidden" name="id" value="<?php echo $student['Stud_ID']; ?>">
-                            <button type="submit" name="action" value="delete">Delete</button>
+                            <button type="submit" name="action" value="delete"class="delete-button">Delete</button>
                         </form>
                     </td>
                 </tr>
@@ -82,10 +90,10 @@ $con->close();
         <table border="1" cellpadding="5" cellspacing="0">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Course Name</th>
-                    <th>Department</th>
-                    <th>Actions</th>
+                    <th style="padding: 10px;">ID</th>
+                    <th style="padding: 10px;">Course Name</th>
+                    <th style="padding: 10px;">Department</th>
+                    <th style="padding: 10px;">Actions</th>
                 </tr>   
             </thead>
             <tbody>
@@ -98,12 +106,12 @@ $con->close();
                             
                             <form action="update.php" method="post" >
                                 <input type="hidden" name="id" value="<?php echo $course['Course_ID']; ?>">
-                                <button type="submit" name="action" value="update">Update</button>
+                                <button type="submit" name="action" value="update" class="update-button">Update</button>
                             </form>
 
-                            <form action="delete.php" method="post">
+                            <form action="delete_course.php" method="post">
                             <input type="hidden" name="id" value="<?php echo $course['Course_ID']; ?>">
-                            <button type="submit" name="action" value="delete">Delete</button>
+                            <button type="submit" name="action" value="delete" class="delete-button">Delete</button>
                         </form>
 
                         </td>
@@ -114,5 +122,6 @@ $con->close();
     <?php else : ?>
         <p>No course records found.</p>
     <?php endif; ?>
+    </center>
 </body>
 </html>
