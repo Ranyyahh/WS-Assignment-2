@@ -1,49 +1,84 @@
-*{
+
+* {
     box-sizing: border-box;
-    }
+    margin: 0;
+    padding: 0;
+}
 
-    h1{
+h1 {
     text-align: center;
-    }
+    color: #003366;
+    font-size: 32px;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px #99ccff;
+}
 
-    .container{
-    width: 50%;
-    margin: auto;
-    border: 1px solid black;
-    padding: 15px;
-    }
+.container {
+    width: 60%;
+    margin: 30px auto;
+    border: 2px solid #00509e;
+    padding: 20px;
+    background-color: #f0f8ff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px;
+}
 
-    input{
+input {
     width: 100%;
     padding: 10px;
-    border: 1px solid black;
-    margin: 10px;
+    border: 1px solid #00509e;
+    margin: 10px 0;
     font-size: 15px;
-    }
+    border-radius: 8px;
+    background-color: #e6f2ff;
+    color: #003366;
+}
 
-    body{
-    background-color: beige;
-    }
+body {
+    background-color: #d9eaff;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
 
-    .MajorContainer{
+.flex-container {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.MajorContainer {
+    flex: 1;
     text-align: center;
     font-size: 15px;
-    }
+    color: #003366;
+    margin-top: 15px; 
+} 
 
-    .major1{
-    width: 5%;
-    }
-
-    .DepartmentContainer{
+.DepartmentContainer {
+    flex: 1;
     text-align: center;
     font-size: 15px;
-    }
+    color: #003366;
+    margin-top: 15px;
+}
 
-    .dep1{
-    width: 5%;
-    }
-    
-    button{
+select {
+    width: 100%;
     padding: 10px;
+    border: 1px solid #00509e;
+    border-radius: 8px;
+    background-color: #e6f2ff;
+    color: #003366;
+    font-size: 15px;
+    margin: 15px;
+}
+
+button {    
+    padding: 15px 20px;
     width: 15%;
-    }
+    background-color: #00509e;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px;
+
+}
