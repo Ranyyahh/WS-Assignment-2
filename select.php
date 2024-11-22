@@ -14,7 +14,6 @@ if ($result->num_rows > 0) {
     }
 }
 
-
 $courseRecords = [];
 $sql = "SELECT * FROM COURSE_TBL";
 $result = $con->query($sql);
@@ -23,7 +22,6 @@ if ($result->num_rows > 0) {
         $courseRecords[] = $row;
     }
 }
-
 
 $con->close();
 ?>
@@ -41,30 +39,44 @@ $con->close();
 <body>
     <h1>Student and Course Records</h1>
     <h3>Student Records</h3>
-    <?php if (!empty($studentRecords)) : ?>
-        <table border="1" cellpadding="5" cellspacing="0">
-            <thead>
+<?php if (!empty($studentRecords)) : ?>
+    <table border="1" cellpadding="5" cellspacing="0">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Major</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($studentRecords as $student) : ?>
                 <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Major</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($studentRecords as $student) : ?>
-                    <tr>
-                        <td><?php echo $student['Stud_ID']; ?></td>
-                        <td><?php echo $student['Stud_Name']; ?></td>
-                        <td><?php echo $student['Major']; ?></td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-    <?php else : ?>
-        <p>No student records found.</p>
-    <?php endif; ?>
+                    <td><?php echo $student['Stud_ID']; ?></td>
+                    <td><?php echo $student['Stud_Name']; ?></td>
+                    <td><?php echo $student['Major']; ?></td>
+                    <td>
+                        
+                        <form action="update.php" method="post" >
+                            <input type="hidden" name="id" value="<?php echo $student['Stud_ID']; ?>">
+                            <button type="submit" name="action" value="update">Update</button>
+                        </form>
 
-  
+                      
+                        <form action="delete.php" method="post">
+                            <input type="hidden" name="id" value="<?php echo $student['Stud_ID']; ?>">
+                            <button type="submit" name="action" value="delete">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+<?php else : ?>
+    <p>No student records found.</p>
+<?php endif; ?>
+
+    <br><br>
     <h3>Course Records</h3>
     <?php if (!empty($courseRecords)) : ?>
         <table border="1" cellpadding="5" cellspacing="0">
@@ -73,7 +85,8 @@ $con->close();
                     <th>ID</th>
                     <th>Course Name</th>
                     <th>Department</th>
-                </tr>
+                    <th>Actions</th>
+                </tr>   
             </thead>
             <tbody>
                 <?php foreach ($courseRecords as $course) : ?>
@@ -81,6 +94,19 @@ $con->close();
                         <td><?php echo $course['Course_ID']; ?></td>
                         <td><?php echo $course['Course_Name']; ?></td>
                         <td><?php echo $course['Department']; ?></td>
+                        <td> 
+                            
+                            <form action="update.php" method="post" >
+                                <input type="hidden" name="id" value="<?php echo $course['Course_ID']; ?>">
+                                <button type="submit" name="action" value="update">Update</button>
+                            </form>
+
+                            <form action="delete.php" method="post">
+                            <input type="hidden" name="id" value="<?php echo $course['Course_ID']; ?>">
+                            <button type="submit" name="action" value="delete">Delete</button>
+                        </form>
+
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
